@@ -4,7 +4,9 @@ const { Pool } = require('pg');
 
 const app = express();
 app.use(cors({
-  origin: process.env.CORS_ORIGIN || 'https://localhost:5173'
+  origin: '*',
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONs'],
+  allowHeaders: ['Content-Type', 'Authorization']
 }));
 app.use(express.json()); // parse JSON body
 
