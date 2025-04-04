@@ -48,6 +48,7 @@ app.post('/api/tweets', async (req, res) => {
     const insertQuery = `
       INSERT INTO tweets (tweet_url, tags, description)
       VALUES ($1, $2, $3)
+      ON CONFLICT (tweet_url) DO NOTHING
       RETURNING *;
     `;
     const values = [tweetUrl, tags, description];
